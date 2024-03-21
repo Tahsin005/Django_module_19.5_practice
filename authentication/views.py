@@ -12,6 +12,7 @@ def signup(request):
         if request.method == 'POST':
             form = RegistrationForm(request.POST)
             if form.is_valid():
+                messages.success(request, 'Account created successfully')
                 form.save(commit=True)
                 return redirect('login')
         return render(request,'signup.html', {'form': form})
@@ -30,7 +31,8 @@ def user_login(request):
                 
                 if user is not None:
                     login(request, user)
-                    return redirect('home')
+                    messages.success(request, 'Logged in successuflly')
+                    return redirect('profile')
         return render(request, 'login.html', {'form': form})
     else:
         return redirect('home')

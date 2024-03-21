@@ -5,6 +5,15 @@
     <div style="width: 50%; margin: auto;" class="mb-5">
         <h1>Musician and their album</h1>
     </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert bg-warning mx-auto" role="alert" style="width:50%;">
+                <button type="button" class="border border-warning rounded btn-close btn-close-dark m-auto" data-bs-dismiss="alert" arial-label="Close"></button>
+
+                <span class="text-center" >{{message}}</span>
+            </div>
+        {% endfor %}
+        {% endif %}
     <table class="table table-striped">
         <thead>
           <tr>

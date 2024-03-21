@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from album.models import Album
 from album.forms import AlbumForm
+from django.contrib import messages
 # Create your views here.
 def create_album(request):
     form = AlbumForm()
@@ -8,6 +9,7 @@ def create_album(request):
         form = AlbumForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
+            messages.success(request, 'Album created successfully')
             return redirect("home")
     
     return render(request, 'create_album.html', {"form": form})

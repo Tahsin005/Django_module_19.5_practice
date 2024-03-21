@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from musician.forms import MusicianForm
 from musician.models import Musician
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 # Create your views here.
 def create_musician(request):
     form = MusicianForm()
@@ -10,6 +10,7 @@ def create_musician(request):
         form = MusicianForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
+            messages.success(request, 'Musician added successfully')
             return redirect("home")
     return render(request, "create_musician.html", {"form": form})
 

@@ -3,6 +3,15 @@
 {% block content %}
 <div class="containe mt-5r" style="width: 50%; margin: auto;">
     <h1>Welcome to your profile - {{user}}</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert bg-warning mx-auto" role="alert" style="width:50%;">
+                <button type="button" class="border border-warning rounded btn-close btn-close-dark m-auto" data-bs-dismiss="alert" arial-label="Close"></button>
+
+                <span class="text-center" >{{message}}</span>
+            </div>
+        {% endfor %}
+        {% endif %}
         <div class="mt-5">
             <a href="{% url "pass_change1" %}"><button class="btn btn-danger mb-5">Change password using old password</button></a>
             <a href="{% url 'pass_change2' %}"><button class="btn btn-warning mb-5">Change password withou using old password</button></a> 
