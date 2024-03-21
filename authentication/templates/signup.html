@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="p-3 ">
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert bg-warning mx-auto" role="alert" style="width:50%;">
+                <button type="button" class="border border-warning rounded btn-close btn-close-dark m-auto" data-bs-dismiss="alert" arial-label="Close"></button>
+
+                <span class="text-center" >{{message}}</span>
+            </div>
+        {% endfor %}
+        {% endif %}
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {{form | crispy}}
+            
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form> 
+        </div>
+    </div>
+{% endblock %}
