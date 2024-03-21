@@ -81,7 +81,7 @@ def edit_profile(request):
             form = EditProfileForm(request.POST, instance=request.user)
             
             if form.is_valid():
-                messages.success(request, 'Account created successfully!')
+                messages.success(request, 'Information changed successfully!')
                 form.save(commit=True)
                 return redirect("profile")
         return render(request, 'edit_profile.html', {"form": form})

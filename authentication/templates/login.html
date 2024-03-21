@@ -3,6 +3,15 @@
 
 {% block content %}
 <div class="p-3 ">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert bg-warning mx-auto" role="alert" style="width:50%;">
+                <button type="button" class="border border-warning rounded btn-close btn-close-dark m-auto" data-bs-dismiss="alert" arial-label="Close"></button>
+
+                <span class="text-center" >{{message}}</span>
+            </div>
+        {% endfor %}
+        {% endif %}
 <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div>
         <form action="" method="post" novalidate class="mb-3">
